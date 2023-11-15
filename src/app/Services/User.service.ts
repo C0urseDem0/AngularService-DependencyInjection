@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { User } from '../header/Models/User';
 
 @Injectable({
@@ -8,10 +8,10 @@ export class UserService {
 
 constructor() { }
 users:User[]=[
-  new User('Mona1', 'Femal', 'Monthly', 'Active'),
-  new User('Mona2', 'Femal', 'Yearly', 'InActive'),
-  new User('Mona3', 'Femal', 'Monthly', 'Active'),
-  new User('Mona4', 'Femal', 'Monthly', 'InActive'),
+  new User('Mona1', 'Female', 'Monthly', 'Active'),
+  new User('Mona2', 'Male', 'Yearly', 'InActive'),
+  new User('Mona3', 'Female', 'Monthly', 'Active'),
+  new User('Mona4', 'Male', 'Monthly', 'InActive'),
 ]
 
 GetAllUsers(){
@@ -21,4 +21,11 @@ CreateUser(name:string,gender:string,subType:string,status:string) {
   let user=new User(name,gender,subType,status)
   this.users.push(user)
 }
+
+OnUserDetailsClick:EventEmitter<User>=new EventEmitter<User>();
+ShowUserDetails(user:User){
+this.OnUserDetailsClick.emit(user)
+
+}
+
 }

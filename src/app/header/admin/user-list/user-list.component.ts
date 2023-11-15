@@ -13,5 +13,7 @@ constructor(private userService:UserService) {
 }
 
 ListUser=this.userService.GetAllUsers()
-
+ShowUserDetails(item){
+  this.userService.ShowUserDetails(item)
+}
 }
